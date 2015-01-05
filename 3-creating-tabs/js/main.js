@@ -105,4 +105,69 @@
 
   var tM = new TabManager(config);
 
+  // Injection
+
+  var injectorConfig = {
+    element: document.querySelector("form")
+  }
+
+  function TabInjector(options) {
+    this.elem = options.element;
+    this.values = {}
+  }
+
+  TabInjector.prototype = {
+    dispatchSubmitEvent: function() {
+      var formSubmit = new CustomEvent("formSubmit", {"detail": this.values, bubbles: true});
+      this.elem.dispatchEvent(formSubmit);
+    },
+    submitListener: function() {
+      console.log(this.elem);
+      this.elem.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var i;
+        for (i = 0; i < this.elem.length; i++) {
+          if (this.elem[i].type === "text") {
+            if (this.elem[i].class === "user-title") {
+              this.values.tab = this.elem[i];
+            };
+            if (this.elem[i].class === "user-content") {
+              this.values.content = this.elem[i];
+            };
+          }
+        }
+        this.dispatchSubmitEvent();
+      }.bind(this));
+    }
+  }
+
+  var tI = new TabInjector(injectorConfig);
+
+  tI.submitListener();
+
 })();
+
+
+// var form = document.querySelector("form");
+
+// form.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   console.log(form[2]);
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
