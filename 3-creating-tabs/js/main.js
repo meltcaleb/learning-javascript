@@ -3,11 +3,13 @@
   var config = [
     {
       id: "#tab1",
-      isActive: true
+      isActive: true,
+      content: "#tabContent1"
     },
     {
       id: "#tab2",
-      isActive: false
+      isActive: false,
+      content: "#tabContent2"
     }
   ]
 
@@ -21,14 +23,20 @@
        console.log(this.elem);
        this.elem.classList.add("active");
      }
+     this.isActive = isActive;
+     this.elem = document.querySelector(id);
+     console.log(this.elem);
+     this.id = id;
   }
 
   function TabManager(optionsObj) {
     this.init = function() {
       var i,
-          tempTab;
+          tempTab,
+          tempContent;
       for (i = 0; i < config.length; i++) {
         tempTab = new Tab(config[i].id, config[i].isActive);
+        tempContent = new Content(config[i].content, config[i].isActive);
         if (tempTab.isActive) {
           this.currentTab = tempTab;
         };
@@ -55,9 +63,6 @@
   }
 
   function Tab(id, isActive) {
-    this.isActive = isActive;
-    this.elem = document.querySelector(id);
-    this.id = id;
     DomActivator.call(this, id, isActive);
     this.init = function() {
       this.isClicked();
@@ -79,6 +84,16 @@
         this.elem.classList.toggle("active");
 
       }.bind(this));
+    }}
+
+  function Content(id, isActive) {
+    DomActivator.call(this, id, isActive);
+    this.init = function() {
+      if (this.isActive) {
+        this.setActive();
+      }
+    }
+    this.init();
   }
 
   var tM = new TabManager(config);
