@@ -11,6 +11,18 @@
     }
   ]
 
+  function DomActivator(id, isActive) {
+     this.removeActive = function() {
+       this.isActive = false;
+       this.elem.classList.remove("active");
+     }
+     this.setActive = function() {
+       this.isActive = true;
+       console.log(this.elem);
+       this.elem.classList.add("active");
+     }
+  }
+
   function TabManager(optionsObj) {
     this.init = function() {
       var i,
@@ -32,7 +44,6 @@
       if (this.currentTab) {
         this.currentTab.removeActive();
       }
-      // newCurrentTab.__proto__.setActive();
       console.log(newCurrentTab);
       this.currentTab = newCurrentTab;
     },
@@ -47,6 +58,7 @@
     this.isActive = isActive;
     this.elem = document.querySelector(id);
     this.id = id;
+    DomActivator.call(this, id, isActive);
     this.init = function() {
       this.isClicked();
       if (this.isActive) {
@@ -67,16 +79,6 @@
         this.elem.classList.toggle("active");
 
       }.bind(this));
-    },
-    removeActive: function() {
-      this.isActive = false;
-      this.elem.classList.remove("active");
-    },
-    setActive: function() {
-      this.isActive = true;
-      console.log(this.elem);
-      this.elem.classList.add("active");
-    }
   }
 
   var tM = new TabManager(config);
