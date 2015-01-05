@@ -32,7 +32,7 @@
       if (this.currentTab) {
         this.currentTab.removeActive();
       }
-      newCurrentTab.__proto__.setActive();
+      // newCurrentTab.__proto__.setActive();
       console.log(newCurrentTab);
       this.currentTab = newCurrentTab;
     },
