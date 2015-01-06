@@ -122,7 +122,6 @@
       this.elem.dispatchEvent(formSubmit);
     },
     submitListener: function() {
-      console.log(this.elem);
       this.elem.addEventListener("submit", function (e) {
         e.preventDefault();
         var i;
@@ -146,15 +145,6 @@
   tI.submitListener();
 
 })();
-
-
-// var form = document.querySelector("form");
-
-// form.addEventListener("submit", function (e) {
-//   e.preventDefault();
-//   console.log(form[2]);
-// });
-
 
 
 
