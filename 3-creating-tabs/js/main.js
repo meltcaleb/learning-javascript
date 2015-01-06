@@ -150,7 +150,6 @@
           }
         }
         this.dispatchSubmitEvent();
-        this.createTabs();
 
       }.bind(this));
     }
