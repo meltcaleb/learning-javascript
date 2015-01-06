@@ -121,20 +121,20 @@
       var formSubmit = new CustomEvent("formSubmit", {"detail": this.values, bubbles: true});
       this.elem.dispatchEvent(formSubmit);
     },
-    createTabs: function() {
+    // createTabs: function() {
       
-      var title = this.values.tab,
-          content = this.values.content,
-          newLi = document.createElement("li"),
-          newP = document.createElement("p");
+    //   var title = this.values.tab,
+    //       content = this.values.content,
+    //       newLi = document.createElement("li"),
+    //       newP = document.createElement("p");
 
-      newLi.innerHTML = "<p id=" + title + ">" + title + "</p>";
-      newP.innerHTML = content;
+    //   newLi.innerHTML = "<p id=" + title + ">" + title + "</p>";
+    //   newP.innerHTML = content;
 
-      document.getElementById("tabs-content").appendChild(newP);
-      document.getElementById("tab-titles").appendChild(newLi);
+    //   document.getElementById("tab-contents").appendChild(newP);
+    //   document.getElementById("tab-titles").appendChild(newLi);
 
-    },
+    // },
     submitListener: function() {
       this.elem.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -161,37 +161,3 @@
   tI.submitListener();
 
 })();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// ### Start of Injection Attempt
-
-        // function createTabs() {
-          
-        //   var title = this.values.tab,
-        //       content = this.values.content,
-        //       newLi = document.createElement("li"),
-        //       newP = document.createElement("p");
-
-        //   newLi.innerHTML = "<p id=" + title + ">" + title + "</p>";
-        //   newP.innerHTML = content;
-
-        //   document.getElementById("tabs-content").appendChild(newP);
-        //   document.getElementById("tab-titles").appendChild(newLi);
-
-        // }
-
-// ### End of Injection Attempt
